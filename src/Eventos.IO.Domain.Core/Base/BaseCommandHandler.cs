@@ -1,16 +1,19 @@
 using System;
 using System.Collections.Generic;
+using Eventos.IO.Domain.Core.Interface;
 using FluentValidation.Results;
 
-namespace Eventos.IO.Domain.Core
+namespace Eventos.IO.Domain.Core.Base
 {
     public abstract class BaseCommandHandler
     { 
         private readonly IUnitOfWork _unitOfWork;
+        protected readonly IBus _bus;
 
-        public BaseCommandHandler(IUnitOfWork unitOfWork)
+        public BaseCommandHandler(IUnitOfWork unitOfWork, IBus bus)
         {
             _unitOfWork = unitOfWork;
+            _bus = bus;
         }
 
         protected void NotificarValidacoesErro(IEnumerable<ValidationFailure> errors)

@@ -1,7 +1,7 @@
 using System;
 using Eventos.IO.Domain.Core;
 
-namespace Eventos.IO.Domain.Core
+namespace Eventos.IO.Domain.Core.Base
 {
     public  abstract class Command : Message
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Eventos.IO.Domain.Core
+namespace Eventos.IO.Domain.Core.Base
 {
     public class BaseResponse
     {

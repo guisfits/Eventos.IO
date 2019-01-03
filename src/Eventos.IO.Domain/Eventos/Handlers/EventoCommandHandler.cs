@@ -1,8 +1,12 @@
+using System;
 using Eventos.IO.Domain.Core;
+using Eventos.IO.Domain.Core.Base;
+using Eventos.IO.Domain.Core.Interface;
 using Eventos.IO.Domain.Eventos.Commands;
+using Eventos.IO.Domain.Eventos.Events;
 using Eventos.IO.Domain.Eventos.Interfaces;
 
-namespace Eventos.IO.Domain.Eventos.CommandHandlers
+namespace Eventos.IO.Domain.Eventos.Handlers
 {
     public class EventoCommandHandler : BaseCommandHandler,
         IHandler<RegistrarEventoCommand>,
@@ -13,8 +17,8 @@ namespace Eventos.IO.Domain.Eventos.CommandHandlers
 
         private readonly IEventoRepository _eventoRepository;
 
-        public EventoCommandHandler(IEventoRepository eventoRepository, IUnitOfWork unitOfWork)
-            :base(unitOfWork)
+        public EventoCommandHandler(IEventoRepository eventoRepository, IUnitOfWork unitOfWork, IBus bus)
+            :base(unitOfWork, bus)
         {
             this._eventoRepository = eventoRepository;
         }
@@ -25,8 +29,8 @@ namespace Eventos.IO.Domain.Eventos.CommandHandlers
         {
             var evento = new Evento(
                 message.Nome,
-                message.DescricaoCurta,
-                message.DescricaoLonga,
+                null,
+                null,
                 message.DataInicio,
                 message.DataFim,
                 message.Gratuito,
@@ -46,7 +50,8 @@ namespace Eventos.IO.Domain.Eventos.CommandHandlers
 
             if(Commit().Success)
             {
-                // Notificar processo concluido!
+                Console.WriteLine("Evento registrado com sucesso");
+                _bus.RaiseEvent(new EventoRegistradoEvent(evento.Id, evento.Nome, evento.DataInicio, evento.DataFim, evento.Gratuito, evento.Valor, evento.Online, evento.NomeEmpresa));
             }
         }
 

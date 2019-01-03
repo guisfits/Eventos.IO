@@ -1,4 +1,4 @@
-using Eventos.IO.Domain.Core;
+using Eventos.IO.Domain.Core.Interface;
 
 namespace Eventos.IO.Domain.Eventos.Interfaces
 {

@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Eventos.IO.Domain.Core;
+using Eventos.IO.Domain.Core.Base;
 
-namespace Eventos.IO.Domain.Core
+namespace Eventos.IO.Domain.Core.Interface
 {
     public interface IRepository<TEntity> : IDisposable where TEntity : Entity 
     {

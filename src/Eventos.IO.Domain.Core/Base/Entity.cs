@@ -1,6 +1,6 @@
 using System;
 
-namespace Eventos.IO.Domain.Core
+namespace Eventos.IO.Domain.Core.Base
 {
     public abstract class Entity
     {

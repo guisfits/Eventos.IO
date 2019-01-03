@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Eventos.IO.Domain.Core;
+using Eventos.IO.Domain.Core.Base;
 using Eventos.IO.Domain.Eventos.Validations;
 using Eventos.IO.Domain.Organizadores;
 using FluentValidation.Results;

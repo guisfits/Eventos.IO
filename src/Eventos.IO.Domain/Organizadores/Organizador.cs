@@ -1,4 +1,4 @@
-using Eventos.IO.Domain.Core;
+using Eventos.IO.Domain.Core.Base;
 
 namespace Eventos.IO.Domain.Organizadores
 {
