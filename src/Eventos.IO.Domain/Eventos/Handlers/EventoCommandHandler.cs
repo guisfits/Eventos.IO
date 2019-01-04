@@ -2,6 +2,7 @@ using System;
 using Eventos.IO.Domain.Core;
 using Eventos.IO.Domain.Core.Base;
 using Eventos.IO.Domain.Core.Interface;
+using Eventos.IO.Domain.Core.Interfaces;
 using Eventos.IO.Domain.Eventos.Commands;
 using Eventos.IO.Domain.Eventos.Events;
 using Eventos.IO.Domain.Eventos.Interfaces;
@@ -17,8 +18,8 @@ namespace Eventos.IO.Domain.Eventos.Handlers
 
         private readonly IEventoRepository _eventoRepository;
 
-        public EventoCommandHandler(IEventoRepository eventoRepository, IUnitOfWork unitOfWork, IBus bus)
-            :base(unitOfWork, bus)
+        public EventoCommandHandler(IEventoRepository eventoRepository, IUnitOfWork unitOfWork, IBus bus, IDomainNotificationHandler<DomainNotification> notification)
+            :base(unitOfWork, bus, notification)
         {
             this._eventoRepository = eventoRepository;
         }

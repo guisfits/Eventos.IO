@@ -24,9 +24,14 @@ namespace Eventos.IO.Domain.Core.Base
             get => _erros; 
         }
 
-        public void AddError(string messageError)
+        public void Fail()
         {
             _success = false;
+        }
+
+        public void Fail(string messageError)
+        {
+            Fail();
             _erros.Add(messageError);
         }
     }
